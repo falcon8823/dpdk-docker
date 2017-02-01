@@ -17,8 +17,8 @@ ENV RTE_TARGET x86_64-native-linuxapp-gcc
 ENV RTE_SDK /usr/local/src/dpdk-${DPDK_VERSION}
 
 WORKDIR $RTE_SDK
-RUN make install -j${nproc} T=${RTE_TARGET} \
-    && make -C examples/ -j${nproc}
+RUN make install T=${RTE_TARGET} \
+    && make -C examples/
 
 ENV PATH "$PATH:$RTE_SDK/$RTE_TARGET/app"
 
